@@ -6,7 +6,6 @@ import DevTools from './config/devtools'
 import getStore from './config/store'
 import ErrorBoundary from './error/error-boundary'
 import AppComponent from './app'
-import { onClick } from './modules/game/reducer'
 
 const devTools = process.env.NODE_ENV === 'development' ? <DevTools /> : null
 

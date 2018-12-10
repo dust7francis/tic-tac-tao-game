@@ -12,10 +12,11 @@ export const ErrorBoundaryRoute = ({
     </ErrorBoundary>
   )
 
-  if (!Component)
+  if (!Component) {
     throw new Error(
       `A component needs to be specified for path ${(rest as any).path}`
     )
+  }
 
   return <Route {...rest} render={encloseInErrorBoundary} />
 }

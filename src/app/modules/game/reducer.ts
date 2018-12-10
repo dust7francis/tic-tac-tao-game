@@ -5,7 +5,7 @@ export const ACTION_TYPES = {
   RESET: 'GAME_RESET'
 }
 
-const initialState = {
+export const initialState = {
   errorMessage: null,
   squares: ['', '', '', '', '', '', '', '', ''],
   xIsNext: true,
@@ -14,6 +14,9 @@ const initialState = {
 }
 
 export const calculateWinner = (squares: string[]) => {
+  if (!squares) {
+    return null
+  }
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -34,13 +37,16 @@ export const calculateWinner = (squares: string[]) => {
   return null
 }
 
-const allClicked = (squares: string[]) =>
-  squares.findIndex((s: string) => s === '') === -1
-
+export const allClicked = (squares: string[]) =>
+  squares ? squares.findIndex((s: string) => s === '') === -1
+    : null
 export type GameState = Readonly<typeof initialState>
 
 // Reducer
 export default (state: GameState = initialState, action): GameState => {
+  if (!action) {
+    return state
+  }
   switch (action.type) {
     case ACTION_TYPES.RESET:
       return {

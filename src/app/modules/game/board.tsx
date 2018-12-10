@@ -20,7 +20,6 @@ const row = (
 
 const Board = ({ squares, onClick }: IProps) => (
   <div>
-    <div className="status">{status}</div>
     {[0, 3, 6].map((startIndex: number) => (
       <Row className="board-row" key={startIndex}>
         {row(startIndex, squares, onClick)}
